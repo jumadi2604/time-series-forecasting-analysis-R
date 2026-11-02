@@ -1,59 +1,57 @@
-# Trabajo 1 — Series de Tiempo (STVQNQ)
+# Time Series Forecasting Analysis — STVQNQ
 
-**Universidad Nacional de Colombia, sede Medellín · 2026-II**  
-Equipo: STVQNQ  
-Autores: Juan Manuel Diaz Larrea y Sofia Valentina Lopez Ramirez
+*A collaborative time-series study focused on exploratory analysis, temporal dependence, forecasting, and rolling-origin evaluation.*
 
-## Objetivo
+## Descripción
 
-Describir tres series, estudiar el operador de rezago y la dependencia temporal, comparar métodos de pronóstico y formular recomendaciones con métricas de evaluación por orígenes móviles. Las organizaciones y cifras del caso son simuladas, según el enunciado.
+Trabajo colaborativo de análisis de tres series temporales. El flujo integra exploración descriptiva, operadores de rezago, análisis de dependencia, selección de métodos de pronóstico y evaluación mediante orígenes móviles. Los nombres de organizaciones y las cifras del caso son simulados, de acuerdo con el enunciado académico.
 
-## Estructura del repositorio
+**Equipo:** STVQNQ  
+**Autores:** Juan Manuel Diaz Larrea y Sofia Valentina Lopez Ramirez
 
-- `datos/`: tres CSV originales asignados; no deben modificarse manualmente.
-- `R/`: funciones de lectura, gráficos, operadores, dependencia, métodos y evaluación.
-- `analisis/correr-todo.R`: flujo reproducible que calcula resultados, tablas, gráficos, metadatos de sesión, nota ejecutiva y renderiza el informe HTML si Quarto está disponible.
-- `analisis/*.csv`: resultados derivados que se regeneran con el flujo.
-- `analisis/resultados.rds`: objetos completos del análisis.
-- `figs/`: figuras creadas por el flujo.
-- `informe/informe.qmd`: fuente del informe técnico.
-- `informe/informe.html`: informe renderizado; debe regenerarse después de ejecutar el flujo.
-- `informe/generar-nota.R`: script para generar la nota ejecutiva PDF de una página.
-- `informe/nota-interesados.pdf`: nota ejecutiva generada.
-- `sesion-info.txt`: información de la sesión de R usada en la última ejecución.
+## ¿Qué incluye?
 
-## Requisitos
+- Lectura y visualización de tres series.
+- Análisis de rezagos, estacionariedad y dependencia temporal.
+- Implementación de métodos de pronóstico y transformaciones.
+- Comparación de modelos con RMSE, MAD y MAPE.
+- Evaluación por horizontes y orígenes móviles.
+- Generación automatizada de tablas, gráficos, informe HTML y nota ejecutiva.
+- Presentación del trabajo (`exposicion/presentacion_trabajo1.pptx`).
 
-- R 4.3 o posterior.
-- Paquetes base de R; el análisis utiliza funciones de `stats` y gráficos base.
-- Quarto instalado y disponible en el `PATH` para regenerar el informe HTML. El flujo de análisis y la nota PDF se ejecutan aunque Quarto no esté instalado, pero el HTML existente quedará sin actualizar y se mostrará una advertencia.
+## Herramientas
 
-## Ejecución completa
+`R` · `Quarto` · `stats` · `ggplot2` · `CSV`
 
-Abra R/RStudio en la **raíz** del repositorio (la carpeta que contiene `R/`, `datos/`, `analisis/` e `informe/`) y ejecute:
+## Cómo ejecutarlo
+
+Abrir R/RStudio en la raíz del repositorio y ejecutar:
 
 ```r
 source("analisis/correr-todo.R")
 ```
 
-El script valida la estructura, lee las tres series, ejecuta controles de implementación, ajusta y evalúa métodos, y regenera los CSV de resultados, `analisis/resultados.rds`, las figuras de `figs/`, `sesion-info.txt` y `informe/nota-interesados.pdf`. Si Quarto está instalado, también ejecuta `quarto render informe/informe.qmd` y actualiza el HTML. Para renderizarlo manualmente desde la raíz:
+Para renderizar manualmente el informe:
 
-```sh
+```bash
 quarto render informe/informe.qmd
 ```
 
-## Archivos derivados y reproducibilidad
+Se recomienda R 4.3 o posterior. Quarto es necesario para regenerar el informe HTML.
 
-Los CSV de `analisis/` son productos derivados. No edite manualmente los resultados para corregir cifras; corrija el código fuente y vuelva a ejecutar el flujo. El flujo debe crear todas las tablas y figuras referenciadas por `informe/informe.qmd`, incluidas las curvas MSE (`figs/s1_curvas_MSE.png`, `figs/s2_curvas_MSE.png` y `figs/s3_curvas_MSE.png`).
+## Reproducibilidad
 
-La evaluación compara RMSE, MAD y MAPE por horizontes y orígenes móviles. Los parámetros se seleccionan usando el tramo inicial de entrenamiento; los resultados de prueba no deben utilizarse para elegir parámetros. Las bandas de pronóstico son heurísticas y no constituyen garantías probabilísticas.
+Los datos de entrada están en `datos/`. Los archivos CSV de `analisis/`, los gráficos y los informes son resultados derivados del flujo automatizado. La selección de parámetros se realiza sobre entrenamiento; el tramo de prueba se reserva para evaluación.
 
-## Entregables
+## Autoría e historial
 
-1. Informe técnico reproducible (`informe/informe.qmd` y su HTML renderizado).
-2. Nota ejecutiva de una página (`informe/nota-interesados.pdf`).
-3. Código, datos originales, tablas derivadas y figuras necesarias para auditar el análisis.
+Trabajo realizado en equipo por Juan Manuel Diaz Larrea y Sofia Valentina Lopez Ramirez. Se conserva el historial original de 20 commits y la etiqueta `v1.0`, con los autores de cada contribución.
 
-## Uso de IA
+## Estructura
 
-Se utilizó asistencia de IA como apoyo para estructurar el repositorio, implementar y revisar métodos, comparar resultados y redactar partes y correciones del informe. 
+- `datos/`: series originales asignadas.
+- `R/`: funciones de análisis y modelado.
+- `analisis/`: flujo automatizado y resultados derivados.
+- `figs/`: gráficos.
+- `informe/`: informe Quarto y nota ejecutiva.
+- `exposicion/`: presentación.
